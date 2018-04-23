@@ -1,5 +1,5 @@
-###Shangrila - Cotação de Moedas
-###Spring MicroServices
+##Shangrila - Cotação de Moedas
+##Spring MicroServices
 
 Neste projeto foi utilizada a arquitetura baseada em microserviços.
 
@@ -16,7 +16,7 @@ Nesta utilizei Spring (Gerenciamento de Dependência), Spring MVC (ou Spring RES
 
 Utilizei o básico sobre microsserviços. Implementando microsserviços usando o Spring Cloud.
 
-###O que eu fiz
+##O que eu fiz
 
 Desenvolvi e projetei serviços da Web RESTfull
 Configuração Centralizada do Microservice com o Spring Cloud Config Server
@@ -24,7 +24,7 @@ Manipulação de exceções, Validação, HATEOAS e filtragem para serviços Web
 O balanceamento de carga do lado do cliente (Ribbon), o dimensionamento dinâmico (Eureka Naming Server) e um gateway de API (Zuul)
 Implementei o rastreamento distribuído para microsserviços com o Spring Cloud Sleuth e o 
 
-###Zipkin
+##Zipkin
 Tolerância a falhas para microsserviços com Zipkin
 Monitoramento dos serviços RESTful com o Spring Boot Actuador
 Documentação os Serviços Web RESTful com o Swagger
@@ -33,19 +33,19 @@ Usando o Spring Cloud Bus para trocar mensagens sobre atualizações de configur
 Procurei simplificar a comunicação com outros microsserviços usando o Feign REST Client
 Ferramentas Utilizadas
 
-## Installing Tools
+## Instalando as ferramentas
 - Eclipse & Embedded Maven
 - PostMan
 - Git Client - https://git-scm.com/
 - Rabbit MQ - https://www.rabbitmq.com/download.html
 
 
-### Installing Eclipse & Embedded Maven
+## Instalando Eclipse & Embedded Maven
 - Installation Video : https://www.youtube.com/playlist?list=PLBBog2r6uMCSmMVTW_QmDLyASBvovyAO3
 - GIT Repository For Installation : https://github.com/in28minutes/getting-started-in-5-steps
 - PDF : https://github.com/in28minutes/SpringIn28Minutes/blob/master/InstallationGuide-JavaEclipseAndMaven_v2.pdf
 
-### Instalando Rabbit MQ
+## Instalando Rabbit MQ
 
 #### Windows
 - https://www.rabbitmq.com/install-windows.html
@@ -53,7 +53,7 @@ Ferramentas Utilizadas
 - http://www.erlang.org/downloads
 - Video - https://www.youtube.com/watch?v=gKzKUmtOwR4
 
-#### Mac
+### Mac
 - https://www.rabbitmq.com/install-homebrew.html
 
 ## Running Examples
@@ -94,41 +94,41 @@ Ferramentas Utilizadas
 
 Neste projeto procurei trabalhar solucionando os requisitos funcionais e não funcionais.
 
-####Requisitos Funcionais 
+##Requisitos Funcionais 
 
-##RF001 - Caso os parâmetros to e from não forem válidos lançar uma exception;
+RF001 - Caso os parâmetros to e from não forem válidos lançar uma exception;
 
-##RF002 - Caso o valor for menor que zero a ali deverá lançar uma exception;
+RF002 - Caso o valor for menor que zero a ali deverá lançar uma exception;
 
-##RF003 - Para dias em que não há trabalho ( Sábado e Domingo, ignorando feriados). Pegar o primeiro dia antecedente de trabalho. Se a cotação do dia precedente não for avaliada a ali deverá lançar um exception.
+RF003 - Para dias em que não há trabalho ( Sábado e Domingo, ignorando feriados). Pegar o primeiro dia antecedente de trabalho. Se a cotação do dia precedente não for avaliada a ali deverá lançar um exception.
 
-##RF004 - Caso a data da cotação não for avaliada a ali deverá lançar uma exception.
+RF004 - Caso a data da cotação não for avaliada a ali deverá lançar uma exception.
 
-##RF005 - O retorno deverá ser arredondado em duas casas decimais;
+RF005 - O retorno deverá ser arredondado em duas casas decimais;
 
-##RF006 - Para calcular a conversão deverá utilizar o valor de compra.
+RF006 - Para calcular a conversão deverá utilizar o valor de compra.
 
-##RF007 - Schedule para atualizar o repositório local com as cotações.
-
-
-####Requisitos não- Funcionais 
-
-##RNF001 - Disponibilizar a funcionalidade através de uma api externa;
-
-##RNF002 - O resultado deverá em formato o json;
-
-##RNF003 - Utilizar um Banco de Dados No-SQL (MongoDB);
-
-##RNF004 - Arquitetura deve está preparada para receber centenas de requisições por segundo;
-
-##RNF005 - A Aplicação deverá prever falhas de integração entre as APIs, não deixando o client sem nenhuma resposta.
+RF007 - Schedule para atualizar o repositório local com as cotações.
 
 
-####Cenário
+##Requisitos não- Funcionais 
+
+RNF001 - Disponibilizar a funcionalidade através de uma api externa;
+
+RNF002 - O resultado deverá em formato o json;
+
+RNF003 - Utilizar um Banco de Dados No-SQL (MongoDB);
+
+RNF004 - Arquitetura deve está preparada para receber centenas de requisições por segundo;
+
+RNF005 - A Aplicação deverá prever falhas de integração entre as APIs, não deixando o client sem nenhuma resposta.
+
+
+##Cenário
 
 Dentre os microservices do projeto dois são responsáveis por implementar as regras de negócios da Aplicação. 
 
-###spring-batch-csv-to-mongo - 
+##spring-batch-csv-to-mongo - 
 Este projeto é a atualização do repositório local, indo pegar as informações no DataSource do Banco disponibilizado http://www4.bcb.gov.br/Download/fechamento/{stringDateBussinesUpdate}.csv
 
 Onde o {stringDateBussinesUpdate} é a data no formato yyyyMMdd (20141120)
@@ -138,7 +138,7 @@ Exemplo para atualizar o repositório Local com uma date específica
 
 http://localhost:8200/valueSet/batchUpload/20141120
 
-###currency-exchange-service 
+##currency-exchange-service 
 - Este projeto é responsável por calcular a conversão entre moedas, ele faz a busca no repositório local caso não encontre faz a solicitação para atualizar o Banco de Dados Local, depois realizar nova busca caso não encontre lança uma exception, falando que a cotação não é avaliada para aquele dia.
 
 
